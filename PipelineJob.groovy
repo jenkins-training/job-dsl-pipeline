@@ -13,3 +13,18 @@ pipelineJob("$basePath/Example Pipeline") {
         }
     }
 }
+
+multibranchPipelineJob("$basePath/Example Multi-Branch Pipeline") {
+    branchSources {
+        git {
+            remote('https://github.com/jenkins-training/tech-example-web.git')
+            credentialsId('jason')
+            includes('*')
+        }
+    }
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(20)
+        }
+    }
+}
