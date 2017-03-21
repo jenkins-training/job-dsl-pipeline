@@ -6,8 +6,10 @@ folder(basePath) {
 }
 
 pipelineJob("$basePath/Example Pipeline") {
-    cps {
-            script(readFileFromWorkspace('pipeline-maven.groovy'))
-            sandbox()
+    definition {
+        cps {
+                script(readFileFromWorkspace('pipeline-maven.groovy'))
+                sandbox()
+        }
     }
 }
